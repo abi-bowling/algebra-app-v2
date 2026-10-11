@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10162b">
+<meta name="description" content="A fun, blocky algebra adventure for learning mystery numbers.">
+
+
+<title>The Mystery of X</title>
+<style>
+:root{color-scheme:dark;--bg:#24152f;--panel:#3b254d;--purple:#d94fbd;--mint:#77ead3;--gold:#ffe17a;--text:#fff;--muted:#f7dff5}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0%,#7b3f8e 0,#39224f 35%,#21152f 78%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+button{font:inherit;cursor:pointer;border:0;border-radius:14px;padding:14px 16px;font-weight:800;transition:transform .08s,filter .15s}button:active{transform:scale(.98)}button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{width:min(720px,100%);margin:auto;padding:16px 14px 28px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 2px 14px}.brand{font-weight:900;letter-spacing:.08em;font-size:.85rem;color:#c9c0ff}.install{background:#263455;color:white;border:1px solid #536184;padding:9px 12px;font-size:.85rem}
+.hero{background:linear-gradient(135deg,#f07acb,#a75de5 55%,#6b55d9);border-radius:24px;padding:22px 20px;overflow:hidden;position:relative;box-shadow:0 12px 30px #0003}.eyebrow{font-size:.75rem;letter-spacing:.12em;font-weight:900;opacity:.9}.hero h1{font-size:clamp(2rem,8vw,3.2rem);line-height:.98;margin:10px 0}.hero p{color:#f0eaff;max-width:36rem}.avatar-row{display:flex;align-items:end;justify-content:center;gap:18px;margin:8px 0 2px}.avatar{width:86px;text-align:center}.avatar svg{width:78px;height:112px;filter:drop-shadow(0 7px 4px #24135b66)}.avatar span{font-size:.75rem;font-weight:800}.panel{background:rgba(61,38,79,.96);border:1px solid #80528e;border-radius:20px;padding:18px;margin-top:14px}.panel h2{font-size:1.1rem;margin:0 0 12px}.heroes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.hero-choice{background:#50325f;color:white;border:2px solid transparent;padding:12px 5px}.hero-choice.selected{border-color:#ffd4f4;background:#70477f}.choice-avatar{display:block;width:68px;height:82px;margin:0 auto 5px;filter:drop-shadow(0 4px 3px #24135b55)}.avatar-name{display:block;font-size:.82rem;font-weight:900}.mode-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.mode{background:#50325f;color:white;border:2px solid transparent}.mode.selected{border-color:#8df5dc;background:#674276}.primary{background:linear-gradient(90deg,#ff91d8,#bda0ff);color:#32133e;width:100%;margin-top:14px;font-size:1.05rem}.secondary{background:#50325f;color:white;border:1px solid #9d70aa;width:100%;margin-top:10px}.small{font-size:.8rem;color:#b5c0dd;text-align:center;margin:12px 0 0}.progress-line{height:8px;background:#303b5c;border-radius:99px;overflow:hidden;flex:1}.progress-fill{height:100%;background:linear-gradient(90deg,#ff8ed6,#8df5dc);width:0;transition:width .2s}.stats{display:flex;align-items:center;gap:12px;margin-bottom:13px}.stats button{background:transparent;color:white;padding:4px;font-size:1.3rem}.stats small{display:block;color:#d1d8f0;font-size:.72rem}.star-count{color:var(--gold);font-weight:900;white-space:nowrap}.guide{display:flex;align-items:center;gap:12px;background:#50325f;border-radius:16px;padding:12px}.guide-icon{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#ff8ed6,#9f76ff);display:grid;place-items:center;font-size:1.8rem}.guide p{margin:4px 0 0;color:#d1d8f0;font-size:.9rem}.tag{display:inline-block;margin:12px 0 8px;background:#754b87;color:#ffe6fa;border-radius:99px;padding:5px 10px;font-size:.7rem;font-weight:900;letter-spacing:.07em}.equation{background:#2a1937;border-radius:18px;padding:22px 12px;text-align:center}.equation small{color:#b9c4e3;font-weight:800;letter-spacing:.09em}.equation strong{display:block;font-size:clamp(2.2rem,10vw,3.4rem);margin:8px 0}.equation p{margin:0;color:#d1d8f0}.answers{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}.answer{background:linear-gradient(135deg,#d94fbd,#8b5cf6);color:white;font-size:1.25rem;min-height:58px}.answer.correct{background:#164c45;border:2px solid #48d9ac}.answer.wrong{background:#563348;border:2px solid #f49ab3}.feedback{padding:15px;border-radius:16px;margin-top:12px;line-height:1.5}.feedback.good{background:#20584f}.feedback.bad{background:#6d355c}.feedback h3{margin:0 0 6px}.feedback p{margin:0}.hint{background:#65416f;border-radius:14px;padding:12px;margin-top:10px;color:white}.hidden{display:none!important}.finish{text-align:center;padding:26px 16px}.trophy{font-size:4rem}.finish h2{font-size:2rem;margin:8px 0}.score{font-size:1.7rem;color:var(--gold);font-weight:900;margin:14px}.foot{color:#b5c0dd;text-align:center;font-size:.75rem;margin-top:18px;line-height:1.5}
+
+body[data-theme="ocean"]{background:radial-gradient(circle at 15% 0%,#287e9b 0,#183e66 38%,#101c36 80%)}
+body[data-theme="ocean"] .hero{background:linear-gradient(135deg,#44c5d7,#3988e8 55%,#6158d9)}
+body[data-theme="ocean"] .panel{background:rgba(25,54,86,.97);border-color:#478bb0}
+body[data-theme="ocean"] .hero-choice,body[data-theme="ocean"] .mode,body[data-theme="ocean"] .guide,body[data-theme="ocean"] .secondary{background:#244b72;color:white}
+body[data-theme="ocean"] .hero-choice.selected,body[data-theme="ocean"] .mode.selected{background:#316b91;border-color:#8deaf0}
+body[data-theme="ocean"] .primary{background:linear-gradient(90deg,#71e0e1,#a8c6ff);color:#102b4a}
+body[data-theme="sunset"]{background:radial-gradient(circle at 15% 0%,#a64f4f 0,#61344e 38%,#281b39 80%)}
+body[data-theme="sunset"] .hero{background:linear-gradient(135deg,#ffad76,#f16a9c 55%,#985de8)}
+body[data-theme="sunset"] .panel{background:rgba(75,39,63,.97);border-color:#b96b86}
+body[data-theme="sunset"] .hero-choice,body[data-theme="sunset"] .mode,body[data-theme="sunset"] .guide,body[data-theme="sunset"] .secondary{background:#653d5b;color:white}
+body[data-theme="sunset"] .hero-choice.selected,body[data-theme="sunset"] .mode.selected{background:#82486c;border-color:#ffd2a8}
+body[data-theme="sunset"] .primary{background:linear-gradient(90deg,#ffc08a,#ff91c8);color:#48233e}
+.settings-grid{display:grid;grid-template-columns:1fr;gap:12px}.setting-label{display:block;font-weight:800;font-size:.9rem;margin-bottom:6px}.setting-input{width:100%;padding:12px;border-radius:12px;border:1px solid #9d70aa;background:#2a1937;color:white;font:inherit}.settings-note{font-size:.8rem;color:#d1d8f0;margin:10px 0 0}
+
+@media(min-width:600px){.wrap{padding-top:24px}.hero{padding:28px}.panel{padding:22px}.avatar-row{gap:30px}.avatar{width:100px}}
+</style>
+</head>
+<body>
+<div aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-1;font-size:24px;opacity:.5">
+<span style="position:absolute;top:8%;left:3%">✦</span><span style="position:absolute;top:18%;right:5%">♡</span><span style="position:absolute;top:42%;left:2%">✧</span><span style="position:absolute;top:66%;right:3%">✦</span><span style="position:absolute;bottom:9%;left:7%">♡</span><span style="position:absolute;top:83%;right:12%">✧</span>
+</div>
+<div class="wrap">
+  <header class="top"><div class="brand">🎮 MATHS QUEST</div><button id="installBtn" class="install hidden">＋ Install app</button></header>
+  <main>
+    <section id="home">
+      <div class="hero">
+        <div class="eyebrow">✦ YOUR NEXT ADVENTURE STARTS HERE ✦</div>
+        <h1>THE<br>MYSTERY OF X</h1>
+        <p>A pastel block-world adventure! Solve mystery numbers, collect stars and unlock fabulous new challenges.</p>
+        <div class="avatar-row">
+          <div class="avatar"><svg viewBox="0 0 90 130" aria-label="Blocky Star Girl avatar"><rect x="23" y="7" width="44" height="42" rx="4" fill="#f4d7c3"/><path d="M18 29Q12 1 45 2Q78 1 72 32L66 49H58L62 26L28 26L31 49H23Z" fill="#25172b"/><rect x="28" y="24" width="10" height="7" rx="2" fill="white"/><rect x="52" y="24" width="10" height="7" rx="2" fill="white"/><circle cx="33" cy="27" r="3" fill="#3c2450"/><circle cx="57" cy="27" r="3" fill="#3c2450"/><path d="M39 38Q45 43 51 38" stroke="#6b2d53" stroke-width="2" fill="none"/><rect x="17" y="52" width="56" height="38" rx="5" fill="#ff83cf"/><rect x="4" y="53" width="13" height="36" rx="4" fill="#f4d7c3"/><rect x="73" y="53" width="13" height="36" rx="4" fill="#f4d7c3"/><path d="M22 57L45 70L68 57L62 90H28Z" fill="#ffb7e6"/><rect x="20" y="91" width="20" height="29" rx="3" fill="#8b5cf6"/><rect x="50" y="91" width="20" height="29" rx="3" fill="#8b5cf6"/><rect x="13" y="118" width="30" height="9" rx="3" fill="white"/><rect x="48" y="118" width="30" height="9" rx="3" fill="white"/></svg><span>Star Girl</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>✨ Choose your avatar</h2>
+        <div class="heroes">
+          <button class="hero-choice selected" data-avatar="Star Girl"><svg class="choice-avatar" viewBox="0 0 80 96" role="img" aria-label="Star Girl avatar"><path d="M15 25Q8 2 39 4Q72 2 65 28L60 42H20Z" fill="#39203d"/><rect x="19" y="17" width="42" height="36" rx="7" fill="#f4d7c3"/><rect x="25" y="29" width="9" height="7" rx="2" fill="#fff"/><rect x="46" y="29" width="9" height="7" rx="2" fill="#fff"/><circle cx="30" cy="32" r="2.5" fill="#39203d"/><circle cx="50" cy="32" r="2.5" fill="#39203d"/><path d="M32 43Q40 49 48 43" fill="none" stroke="#7a3457" stroke-width="2.5"/><path d="M40 0L44 8L53 9L46 15L48 24L40 19L32 24L34 15L27 9L36 8Z" fill="#ffe36e"/><path d="M14 59L40 50L66 59L61 82H19Z" fill="#ff83cf"/><path d="M25 60L40 70L55 60" fill="none" stroke="#ffd7f1" stroke-width="4"/><rect x="23" y="80" width="14" height="14" rx="3" fill="#8b5cf6"/><rect x="43" y="80" width="14" height="14" rx="3" fill="#8b5cf6"/></svg><span class="avatar-name">Star Girl</span></button>
+          <button class="hero-choice" data-avatar="Style Queen"><svg class="choice-avatar" viewBox="0 0 80 96" role="img" aria-label="Style Queen avatar"><path d="M15 26Q9 3 40 4Q71 3 65 29L61 44H19Z" fill="#7a3b2c"/><path d="M22 13Q9 23 17 50L24 57L28 24Z" fill="#7a3b2c"/><path d="M58 13Q71 23 63 50L56 57L52 24Z" fill="#7a3b2c"/><rect x="20" y="18" width="40" height="35" rx="7" fill="#8f543b"/><rect x="26" y="29" width="9" height="7" rx="2" fill="white"/><rect x="45" y="29" width="9" height="7" rx="2" fill="white"/><circle cx="31" cy="32" r="2.5" fill="#39203d"/><circle cx="49" cy="32" r="2.5" fill="#39203d"/><path d="M32 43Q40 48 48 43" fill="none" stroke="#5d253c" stroke-width="2.5"/><path d="M21 18L25 3L40 11L55 3L59 18Z" fill="#ffd95e" stroke="#fff0a3" stroke-width="2"/><circle cx="40" cy="9" r="3" fill="#ff82d1"/><path d="M13 59L40 50L67 59L62 82H18Z" fill="#b79bff"/><path d="M24 58L40 72L56 58" fill="none" stroke="#e8dcff" stroke-width="4"/><rect x="23" y="80" width="14" height="14" rx="3" fill="#7549bf"/><rect x="43" y="80" width="14" height="14" rx="3" fill="#7549bf"/></svg><span class="avatar-name">Style Queen</span></button>
+          <button class="hero-choice" data-avatar="Pink Ninja"><svg class="choice-avatar" viewBox="0 0 80 96" role="img" aria-label="Pink Ninja avatar"><path d="M15 22Q12 5 40 4Q68 5 65 22L62 45H18Z" fill="#34243f"/><rect x="19" y="18" width="42" height="36" rx="7" fill="#9b6249"/><path d="M17 24Q40 13 63 24L60 34Q40 27 20 34Z" fill="#ff83cf"/><rect x="25" y="31" width="11" height="6" rx="2" fill="white"/><rect x="44" y="31" width="11" height="6" rx="2" fill="white"/><circle cx="30" cy="34" r="2" fill="#35213c"/><circle cx="50" cy="34" r="2" fill="#35213c"/><path d="M14 59L40 50L66 59L61 82H19Z" fill="#ef68bd"/><path d="M40 58L46 66L40 74L34 66Z" fill="#ffe0f4"/><rect x="23" y="80" width="14" height="14" rx="3" fill="#5934a0"/><rect x="43" y="80" width="14" height="14" rx="3" fill="#5934a0"/><path d="M59 24L75 19L65 31Z" fill="#ffb1e4"/></svg><span class="avatar-name">Pink Ninja</span></button>
+        </div>
+        <h2 style="margin-top:18px">🗺️ Choose your level</h2>
+        <div class="mode-row" id="levelChoices" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+          <button class="mode selected" data-set="0">🌱 Level 1</button>
+          <button class="mode" data-set="1" disabled>🌸 Level 2</button>
+          <button class="mode" data-set="2" disabled>✨ Level 3</button>
+          <button class="mode" data-set="3" disabled>💎 Level 4</button>
+          <button class="mode" data-set="4" disabled>👑 Level 5</button>
+        </div>
+        <button id="playBtn" class="primary">PLAY NOW →</button>
+        <p class="small">No timers. No pressure. Learn as you play.</p>
+      </div>
+      <div class="panel" id="settingsPanel">
+        <h2>⚙️ Personalise your game</h2>
+        <div class="settings-grid">
+          <div><label class="setting-label" for="playerNameInput">1. Change name</label><input id="playerNameInput" class="setting-input" maxlength="24" value="Summer" placeholder="Enter a name"></div>
+          <div><label class="setting-label" for="themeSelect">2. Change theme</label><select id="themeSelect" class="setting-input"><option value="girly">Pastel Girly</option><option value="ocean">Ocean Adventure</option><option value="sunset">Sunset Glow</option></select></div>
+        </div>
+        <button id="saveSettingsBtn" class="primary">SAVE CHANGES</button>
+        <p id="settingsMessage" class="settings-note" aria-live="polite">Choose a name and colour theme for your player.</p>
+      </div>
+      <div class="panel" id="progressPanel">
+        <h2>📊 <span id="progressName">Summer</span>'s progress</h2>
+        <p style="color:#d1d8f0;margin:0 0 12px">Progress is saved on this device in this browser.</p>
+        <div class="mode-row">
+          <div class="mode" style="padding:12px;text-align:center;cursor:default"><strong id="savedGames" style="font-size:1.5rem">0</strong><br><small>Quests finished</small></div>
+          <div class="mode" style="padding:12px;text-align:center;cursor:default"><strong id="savedCorrect" style="font-size:1.5rem">0</strong><br><small>Correct answers</small></div>
+        </div>
+        <p id="topicSummary" style="color:#d1d8f0;font-size:.85rem;margin:12px 0 0">Play a quest to start building your progress.</p>
+        <button id="parentDashboardBtn" class="primary" style="margin-top:12px">👩‍🏫 OPEN PARENT DASHBOARD</button>
+        <button id="resetProgressBtn" class="secondary" style="margin-top:10px">RESET SAVED PROGRESS</button>
+      </div>
+    </section>
+    <section id="parentDashboard" class="hidden">
+      <div class="panel">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+          <div><div class="eyebrow" style="color:#b9a7ff">PARENT AREA</div><h2 style="font-size:1.5rem;margin:5px 0"><span id="dashboardName">Summer</span>'s Learning Dashboard</h2></div>
+          <div style="font-size:2rem">📊</div>
+        </div>
+        <p style="color:#d1d8f0;margin:0 0 14px">A quick overview of practice, accuracy and topics to revisit. Results are stored in this browser on this device.</p>
+        <div class="mode-row">
+          <div class="mode" style="padding:14px;text-align:center;cursor:default"><strong id="dashGames" style="font-size:1.7rem">0</strong><br><small>Quests completed</small></div>
+          <div class="mode" style="padding:14px;text-align:center;cursor:default"><strong id="dashQuestions" style="font-size:1.7rem">0</strong><br><small>Questions attempted</small></div>
+          <div class="mode" style="padding:14px;text-align:center;cursor:default"><strong id="dashAccuracy" style="font-size:1.7rem">—</strong><br><small>Accuracy</small></div>
+          <div class="mode" style="padding:14px;text-align:center;cursor:default"><strong id="dashStars" style="font-size:1.7rem">0</strong><br><small>Stars earned</small></div>
+        </div>
+        <h2 style="margin-top:20px">Topic breakdown</h2>
+        <div id="topicBreakdown"><p style="color:#d1d8f0">Once Summer answers questions, topic results will appear here.</p></div>
+        <h2 style="margin-top:20px">Suggested next step</h2>
+        <div id="parentRecommendation" class="hint">Play a quest to get a personalised practice suggestion.</div>
+        <p id="lastPlayedText" style="font-size:.8rem;color:#b5c0dd;margin-top:14px"></p>
+        <button id="dashboardBackBtn" class="primary">← BACK TO GAME MENU</button>
+      </div>
+      <p class="foot">This is a supportive guide, not a school assessment. Use the topic results to decide what to practise together.</p>
+    </section>
+    <section id="game" class="hidden">
+      <div class="stats"><button id="homeBtn" aria-label="Back to home">⌂</button><div style="flex:1"><small id="progressText">QUEST PROGRESS</small><div class="progress-line"><div id="progressFill" class="progress-fill"></div></div></div><div class="star-count">⭐ <span id="starCount">0</span></div></div>
+      <div class="panel">
+        <div class="guide"><div class="guide-icon" id="guideEmoji">🧢</div><div><strong id="greeting">Hey, Explorer!</strong><p id="prompt">Find the missing number!</p></div></div>
+        <div class="tag" id="topic">ADD & SUBTRACT</div>
+        <div class="equation"><small>FIND THE MYSTERY NUMBER</small><strong id="equation">x + 3 = 8</strong><p>What number does x stand for?</p></div>
+        <h2 style="margin-top:16px">Choose your answer</h2>
+        <div id="answers" class="answers"></div>
+        <button id="hintBtn" class="secondary">💡 I need a hint</button>
+        <div id="hint" class="hint hidden"></div>
+        <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+        <button id="nextBtn" class="primary hidden">NEXT CHALLENGE →</button>
+      </div>
+      <p class="foot">Remember: whatever you do to one side of an equation, do to the other side too.</p>
+    </section>
+    <section id="finish" class="panel finish hidden">
+      <div class="trophy">🏆</div><h2>QUEST COMPLETE!</h2><p id="finishText">Amazing work! You explored algebra and practised finding mystery numbers.</p><div class="score" id="finalScore">⭐ 0 / 6 stars</div><p>Every question helps you get better. Keep going, future maths champion!</p><button id="reviewMistakesBtn" class="primary hidden">PRACTISE MY MISTAKES ↻</button><button id="nextLevelBtn" class="primary hidden">UNLOCK NEXT LEVEL →</button><button id="againBtn" class="secondary">REPLAY THIS LEVEL</button><button id="menuBtn" class="secondary">BACK TO HERO SELECTION</button>
+    </section>
+  </main>
+  <p class="foot">THE MYSTERY OF X · A learning game made for curious minds. Progress is stored only in this browser on this device; it is not sent anywhere.</p>
+</div>
+<script>
+const questionSets = [
+[
+{eq:"x + 3 = 8",prompt:"Find the missing number!",options:["3","5","11"],correct:"5",hint:"Undo +3 by taking 3 away from 8.",explain:"8 − 3 = 5, so x = 5.",topic:"ADD & SUBTRACT"},
+{eq:"x + 6 = 10",prompt:"Help your character unlock the gate!",options:["4","16","6"],correct:"4",hint:"What is 10 minus 6?",explain:"10 − 6 = 4, so x = 4.",topic:"ADD & SUBTRACT"},
+{eq:"x − 4 = 5",prompt:"Find the key to the treasure chest!",options:["1","9","20"],correct:"9",hint:"Undo −4 by adding 4 to both sides.",explain:"5 + 4 = 9, so x = 9.",topic:"ADD & SUBTRACT"},
+{eq:"2x = 12",prompt:"Power up the character!",options:["6","10","24"],correct:"6",hint:"What number multiplied by 2 makes 12?",explain:"12 ÷ 2 = 6, so x = 6.",topic:"MULTIPLICATION"},
+{eq:"x ÷ 3 + 2 = 6",prompt:"Bonus challenge: use two steps!",options:["12","8","4"],correct:"12",hint:"Take away 2 first, then multiply by 3.",explain:"6 − 2 = 4, then 4 × 3 = 12. So x = 12.",topic:"TWO-STEP EQUATIONS"},
+{eq:"2x + 1 = 9",prompt:"First mini-boss: solve a two-step equation!",options:["4","5","8"],correct:"4",hint:"Take away 1, then divide by 2.",explain:"9 − 1 = 8, then 8 ÷ 2 = 4. So x = 4.",topic:"TWO-STEP EQUATIONS"}
+],
+[
+{eq:"x + 4 = 11",prompt:"Level 2 warm-up: use a skill you already know.",options:["7","15","4"],correct:"7",hint:"Undo +4 by subtracting 4 from 11.",explain:"11 − 4 = 7, so x = 7.",topic:"ADD & SUBTRACT"},
+{eq:"x + 8 = 13",prompt:"You know how to find the missing number!",options:["5","21","8"],correct:"5",hint:"What is 13 minus 8?",explain:"13 − 8 = 5, so x = 5.",topic:"ADD & SUBTRACT"},
+{eq:"x − 3 = 7",prompt:"Unlock another gate with a familiar move.",options:["4","10","21"],correct:"10",hint:"Add 3 to both sides.",explain:"7 + 3 = 10, so x = 10.",topic:"ADD & SUBTRACT"},
+{eq:"3x = 18",prompt:"One last familiar question before the new challenge.",options:["6","15","21"],correct:"6",hint:"Divide 18 by 3.",explain:"18 ÷ 3 = 6, so x = 6.",topic:"MULTIPLICATION"},
+{eq:"2(x + 3) = 18",prompt:"New challenge! Meet your first bracket puzzle.",options:["6","9","12"],correct:"6",hint:"Divide both sides by 2, then subtract 3.",explain:"18 ÷ 2 = 9, then 9 − 3 = 6.",topic:"BRACKETS"},
+{eq:"3(x − 2) = 21",prompt:"Level 2 boss: solve the bracket puzzle.",options:["5","9","7"],correct:"9",hint:"Divide by 3 first, then add 2.",explain:"21 ÷ 3 = 7, then 7 + 2 = 9.",topic:"BRACKETS"}
+],
+[
+{eq:"x ÷ 4 + 2 = 7",prompt:"Level 3 warm-up: remember your two-step skills.",options:["20","9","12"],correct:"20",hint:"Subtract 2, then multiply by 4.",explain:"7 − 2 = 5, then 5 × 4 = 20.",topic:"TWO-STEP EQUATIONS"},
+{eq:"2x + 3 = 15",prompt:"A familiar two-step puzzle to get you started.",options:["6","9","12"],correct:"6",hint:"Subtract 3, then divide by 2.",explain:"15 − 3 = 12, then 12 ÷ 2 = 6.",topic:"TWO-STEP EQUATIONS"},
+{eq:"3(x + 1) = 18",prompt:"Use the bracket trick you learned last level.",options:["5","6","7"],correct:"5",hint:"Divide by 3, then subtract 1.",explain:"18 ÷ 3 = 6, then 6 − 1 = 5.",topic:"BRACKETS"},
+{eq:"2(x − 4) = 10",prompt:"One more familiar bracket question before the new skill.",options:["1","9","5"],correct:"9",hint:"Divide by 2, then add 4.",explain:"10 ÷ 2 = 5, then 5 + 4 = 9.",topic:"BRACKETS"},
+{eq:"2x + 5 = x + 14",prompt:"New challenge! X is on both sides.",options:["9","19","7"],correct:"9",hint:"Subtract x from both sides, then subtract 5.",explain:"2x + 5 = x + 14. Subtract x to get x + 5 = 14, so x = 9.",topic:"X ON BOTH SIDES"},
+{eq:"4x − 3 = 2x + 11",prompt:"Level 3 boss: balance both sides.",options:["4","7","14"],correct:"7",hint:"Subtract 2x from both sides, then add 3.",explain:"2x − 3 = 11, so 2x = 14 and x = 7.",topic:"X ON BOTH SIDES"}
+],
+[
+{eq:"3x + 4 = x + 18",prompt:"Level 4 warm-up: use your X-on-both-sides skill.",options:["7","11","14"],correct:"7",hint:"Subtract x, then subtract 4 and divide by 2.",explain:"2x + 4 = 18, so 2x = 14 and x = 7.",topic:"X ON BOTH SIDES"},
+{eq:"5x − 6 = 2x + 15",prompt:"You have seen this kind of equation before.",options:["7","3","9"],correct:"7",hint:"Subtract 2x, then add 6 and divide by 3.",explain:"3x − 6 = 15, so 3x = 21 and x = 7.",topic:"X ON BOTH SIDES"},
+{eq:"2x + 9 = x + 17",prompt:"Keep both sides balanced.",options:["8","26","9"],correct:"8",hint:"Subtract x, then subtract 9.",explain:"x + 9 = 17, so x = 8.",topic:"X ON BOTH SIDES"},
+{eq:"6x + 2 = 4x + 18",prompt:"One more familiar equation before the next challenge.",options:["8","10","16"],correct:"8",hint:"Subtract 4x, then subtract 2 and divide by 2.",explain:"2x + 2 = 18, so 2x = 16 and x = 8.",topic:"X ON BOTH SIDES"},
+{eq:"2(x + 5) = 3x − 2",prompt:"New challenge! Expand brackets and balance both sides.",options:["12","8","−12"],correct:"12",hint:"Expand to 2x + 10 = 3x − 2, then subtract 2x.",explain:"2x + 10 = 3x − 2. Subtract 2x and add 2: x = 12.",topic:"BRACKETS & BOTH SIDES"},
+{eq:"3(x − 1) = 2x + 9",prompt:"Level 4 boss: brackets plus X on both sides.",options:["12","6","9"],correct:"12",hint:"Expand to 3x − 3 = 2x + 9, then subtract 2x.",explain:"3x − 3 = 2x + 9. Subtract 2x, then add 3: x = 12.",topic:"BRACKETS & BOTH SIDES"}
+],
+[
+{eq:"4x + 7 = 2x + 21",prompt:"Level 5 warm-up: a familiar X-on-both-sides puzzle.",options:["7","14","9"],correct:"7",hint:"Subtract 2x, then subtract 7 and divide by 2.",explain:"2x + 7 = 21, so 2x = 14 and x = 7.",topic:"X ON BOTH SIDES"},
+{eq:"3x + 8 = x + 20",prompt:"Use the method you mastered in Level 4.",options:["6","12","14"],correct:"6",hint:"Subtract x, subtract 8, then divide by 2.",explain:"2x + 8 = 20, so 2x = 12 and x = 6.",topic:"X ON BOTH SIDES"},
+{eq:"5x − 4 = 3x + 12",prompt:"Keep your balance on both sides.",options:["8","4","16"],correct:"8",hint:"Subtract 3x, then add 4 and divide by 2.",explain:"2x − 4 = 12, so 2x = 16 and x = 8.",topic:"X ON BOTH SIDES"},
+{eq:"2x + 6 = x + 15",prompt:"One more familiar equation before the ultimate challenge.",options:["9","21","7"],correct:"9",hint:"Subtract x, then subtract 6.",explain:"x + 6 = 15, so x = 9.",topic:"X ON BOTH SIDES"},
+{eq:"4(x − 2) = 2x + 10",prompt:"Ultimate challenge! Expand the brackets and balance both sides.",options:["9","5","13"],correct:"9",hint:"Expand to 4x − 8 = 2x + 10, then subtract 2x.",explain:"4x − 8 = 2x + 10. Subtract 2x and add 8: 2x = 18, so x = 9.",topic:"BRACKETS & BOTH SIDES"},
+{eq:"5(x + 1) = 3x + 19",prompt:"Final boss! Solve the whole equation step by step.",options:["7","12","9"],correct:"7",hint:"Expand to 5x + 5 = 3x + 19, then subtract 3x.",explain:"5x + 5 = 3x + 19. Subtract 3x and 5: 2x = 14, so x = 7.",topic:"BRACKETS & BOTH SIDES"}
+]
+];
+let avatar="Star Girl",selectedSet=0,currentSet=0,level=0,stars=0,answered=false,starred=new Set();
+let reviewMode=false,reviewQueue=[],reviewPos=0,wrongQuestionIndexes=new Set();
+const STORAGE_KEY="mysteryOfXProgress_v1";
+const emptyStats=()=>({gamesCompleted:0,questionsAnswered:0,correctAnswers:0,hintsUsed:0,starsEarned:0,unlockedLevel:0,topic:{},lastPlayed:null});
+function loadStats(){try{return {...emptyStats(),...(JSON.parse(localStorage.getItem(STORAGE_KEY)||"null")||{})}}catch(e){return emptyStats()}}
+let stats=loadStats();
+const $=id=>document.getElementById(id);
+const PROFILE_KEY="mysteryOfXProfile_v1";
+let profile={name:"Summer",theme:"girly"};
+try{profile={...profile,...(JSON.parse(localStorage.getItem(PROFILE_KEY)||"null")||{})}}catch(e){}
+
+const avatarSets={
+ girly:[
+  {name:"Star Girl",skin:"#f4d7c3",hair:"#39203d",shirt:"#ff83cf",pants:"#8b5cf6",accessory:"#ffe36e",emoji:"🎀"},
+  {name:"Style Queen",skin:"#e8b99a",hair:"#7a3b2c",shirt:"#b79bff",pants:"#7549bf",accessory:"#ffd95e",emoji:"👑"},
+  {name:"Pink Ninja",skin:"#c98f70",hair:"#34243f",shirt:"#ef68bd",pants:"#5934a0",accessory:"#ffb1e4",emoji:"🌸"}
+ ],
+ ocean:[
+  {name:"Wave Rider",skin:"#f4d7c3",hair:"#39203d",shirt:"#38b8d1",pants:"#2462a0",accessory:"#d5fbff",emoji:"🌊"},
+  {name:"Sky Scout",skin:"#e8b99a",hair:"#2a2435",shirt:"#62a7ff",pants:"#294b85",accessory:"#ffe36e",emoji:"🧢"},
+  {name:"Aqua Ace",skin:"#c98f70",hair:"#34243f",shirt:"#55d7b5",pants:"#276d79",accessory:"#a8c6ff",emoji:"⚡"}
+ ],
+ sunset:[
+  {name:"Solar Star",skin:"#f4d7c3",hair:"#39203d",shirt:"#ffad76",pants:"#985de8",accessory:"#ffe36e",emoji:"☀️"},
+  {name:"Sunset Skater",skin:"#e8b99a",hair:"#2a2435",shirt:"#f16a9c",pants:"#613e8a",accessory:"#ffc08a",emoji:"🛹"},
+  {name:"Coral Comet",skin:"#c98f70",hair:"#34243f",shirt:"#ff806f",pants:"#7549bf",accessory:"#ffd2a8",emoji:"⭐"}
+ ]
+};
+function avatarSvg(a){return `<svg class="choice-avatar" viewBox="0 0 80 96" role="img" aria-label="${a.name} avatar"><path d="M15 25Q8 2 39 4Q72 2 65 28L60 42H20Z" fill="${a.hair}"/><rect x="19" y="17" width="42" height="36" rx="7" fill="${a.skin}"/><rect x="25" y="29" width="9" height="7" rx="2" fill="#fff"/><rect x="46" y="29" width="9" height="7" rx="2" fill="#fff"/><circle cx="30" cy="32" r="2.5" fill="#39203d"/><circle cx="50" cy="32" r="2.5" fill="#39203d"/><path d="M32 43Q40 49 48 43" fill="none" stroke="#5d253c" stroke-width="2.5"/><path d="M14 59L40 50L66 59L61 82H19Z" fill="${a.shirt}"/><path d="M25 60L40 70L55 60" fill="none" stroke="${a.accessory}" stroke-width="4"/><rect x="23" y="80" width="14" height="14" rx="3" fill="${a.pants}"/><rect x="43" y="80" width="14" height="14" rx="3" fill="${a.pants}"/><path d="M40 0L44 8L53 9L46 15L48 24L40 19L32 24L34 15L27 9L36 8Z" fill="${a.accessory}"/></svg>`}
+function renderAvatarChoices(){const choices=avatarSets[profile.theme]||avatarSets.girly,grid=document.querySelector(".heroes");if(!grid)return;if(!choices.some(a=>a.name===avatar))avatar=choices[0].name;grid.innerHTML=choices.map(a=>`<button class="hero-choice ${a.name===avatar?"selected":""}" data-avatar="${a.name}">${avatarSvg(a)}<span class="avatar-name">${a.name}</span></button>`).join("");grid.querySelectorAll("[data-avatar]").forEach(b=>b.addEventListener("click",()=>{avatar=b.dataset.avatar;grid.querySelectorAll("[data-avatar]").forEach(x=>x.classList.toggle("selected",x===b))}))}
+
+function applyProfile(){
+  const safeName=(profile.name||"Player").trim().slice(0,24)||"Player";
+  profile.name=safeName;
+  document.body.dataset.theme=profile.theme||"girly";
+  if($("playerNameInput"))$("playerNameInput").value=safeName;
+  if($("themeSelect"))$("themeSelect").value=profile.theme||"girly";
+  renderAvatarChoices();
+  if($("progressName"))$("progressName").textContent=safeName;
+  if($("dashboardName"))$("dashboardName").textContent=safeName;
+  try{localStorage.setItem(PROFILE_KEY,JSON.stringify(profile))}catch(e){}
+}
+applyProfile();
+$("saveSettingsBtn").addEventListener("click",()=>{
+  profile.name=$("playerNameInput").value.trim().slice(0,24)||"Player";
+  profile.theme=$("themeSelect").value;
+  applyProfile();
+  $("settingsMessage").textContent=`Saved! Your game is ready for ${profile.name}.`;
+  if(typeof renderDashboard==="function")renderDashboard();
+});
+function saveStats(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(stats))}catch(e){};renderStats()}
+function renderStats(){
+  if(!$("savedGames")) return;
+  $("savedGames").textContent=stats.gamesCompleted;
+  $("savedCorrect").textContent=stats.correctAnswers;
+  const topics=Object.entries(stats.topic||{}).filter(([,v])=>v.answered>0);
+  $("topicSummary").textContent=topics.length
+    ? "By topic: "+topics.map(([name,v])=>`${name.toLowerCase()}: ${v.correct}/${v.answered}`).join(" · ")
+    : "Play a quest to start building your progress.";
+}
+renderStats();
+function renderDashboard(){
+  $("dashGames").textContent=stats.gamesCompleted||0;
+  $("dashQuestions").textContent=stats.questionsAnswered||0;
+  $("dashAccuracy").textContent=stats.questionsAnswered?Math.round((stats.correctAnswers/stats.questionsAnswered)*100)+"%":"—";
+  $("dashStars").textContent=stats.starsEarned||0;
+  const topicEntries=Object.entries(stats.topic||{}).filter(([,v])=>v.answered>0);
+  const breakdown=$("topicBreakdown");
+  if(!topicEntries.length){
+    breakdown.innerHTML='<p style="color:#d1d8f0">No topic results yet. Start with a short quest, then check back here.</p>';
+  } else {
+    breakdown.innerHTML="";
+    topicEntries.forEach(([name,v])=>{
+      const pct=Math.round((v.correct/v.answered)*100);
+      const card=document.createElement("div");
+      card.style.cssText="background:#2b3657;border-radius:14px;padding:12px;margin:9px 0";
+      const header=document.createElement("div");
+      header.style.cssText="display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px";
+      const title=document.createElement("strong"); title.textContent=name.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
+      const score=document.createElement("span"); score.style.cssText="font-size:.85rem;color:#d1d8f0"; score.textContent=`${v.correct} / ${v.answered} correct · ${pct}%`;
+      header.append(title,score);
+      const bar=document.createElement("div");bar.style.cssText="height:8px;background:#10162b;border-radius:99px;overflow:hidden";
+      const fill=document.createElement("div");fill.style.cssText=`height:100%;width:${pct}%;background:${pct>=80?"#48d9ac":pct>=50?"#ffd34d":"#f49ab3"};border-radius:99px`;
+      bar.append(fill);card.append(header,bar);breakdown.append(card);
+    });
+  }
+  let recommendation="Play a quest to get a personalised practice suggestion.";
+  if(stats.questionsAnswered){
+    const weak=topicEntries.filter(([,v])=>v.answered>=2).sort((a,b)=>(a[1].correct/a[1].answered)-(b[1].correct/b[1].answered))[0];
+    if(weak && weak[1].correct/weak[1].answered<0.8){
+      recommendation=`Revisit ${weak[0].toLowerCase()} next. Try 3–5 questions slowly, and ask the player to explain which operation they are undoing.`;
+    } else if(stats.questionsAnswered<8){
+      recommendation="Keep sessions short and positive. Try another quest, then review which steps feel easy or tricky.";
+    } else if(stats.questionsAnswered && stats.correctAnswers/stats.questionsAnswered>=0.8){
+      recommendation="Great progress so far. Ask the player to explain their method out loud, then try a few word problems using the same ideas.";
+    } else {
+      recommendation="Practise one step at a time. Use the hint before choosing, and talk through the inverse operation together.";
+    }
+  }
+  $("parentRecommendation").textContent=recommendation;
+  $("lastPlayedText").textContent=stats.lastPlayed?"Last activity recorded: "+new Date(stats.lastPlayed).toLocaleString():"No activity recorded yet.";
+}
+$("parentDashboardBtn").addEventListener("click",()=>screen("parentDashboard"));
+$("dashboardBackBtn").addEventListener("click",()=>screen("home"));
+$("resetProgressBtn").addEventListener("click",()=>{
+  if(confirm("Reset all saved progress on this device?")){
+    stats=emptyStats();saveStats();selectedSet=0;renderLevelChoices();
+  }
+});
+const emoji={"Star Girl":"🎀","Style Queen":"👑","Pink Ninja":"🌸","Wave Rider":"🌊","Sky Scout":"🧢","Aqua Ace":"⚡","Solar Star":"☀️","Sunset Skater":"🛹","Coral Comet":"⭐"};
+function screen(which){["home","game","finish","parentDashboard"].forEach(s=>$(s).classList.toggle("hidden",s!==which));if(which==="parentDashboard")renderDashboard();window.scrollTo({top:0,behavior:"smooth"})}
+
+function renderLevelChoices(){document.querySelectorAll("[data-set]").forEach(b=>{const idx=Number(b.dataset.set);b.disabled=idx>(stats.unlockedLevel||0);b.classList.toggle("selected",idx===selectedSet);});}
+renderLevelChoices();
+document.querySelectorAll("[data-set]").forEach(b=>b.addEventListener("click",()=>{if(b.disabled)return;selectedSet=Number(b.dataset.set);renderLevelChoices()}));
+function startSet(setIndex){currentSet=setIndex;selectedSet=setIndex;level=0;stars=0;starred=new Set();reviewMode=false;reviewQueue=[];reviewPos=0;wrongQuestionIndexes=new Set();$("reviewMistakesBtn").classList.add("hidden");renderLevelChoices();showQuestion();screen("game")}
+function startMistakeReview(){if(!wrongQuestionIndexes.size)return;reviewMode=true;reviewQueue=[...wrongQuestionIndexes];reviewPos=0;level=reviewQueue[reviewPos];showQuestion();screen("game")}
+$("playBtn").addEventListener("click",()=>startSet(selectedSet));
+$("homeBtn").addEventListener("click",()=>screen("home"));
+$("hintBtn").addEventListener("click",()=>{const wasHidden=$("hint").classList.contains("hidden");$("hint").textContent=questionSets[currentSet][level].hint;$("hint").classList.toggle("hidden");if(wasHidden){stats.hintsUsed=(stats.hintsUsed||0)+1;stats.lastPlayed=new Date().toISOString();saveStats()}});
+function showQuestion(){answered=false;const questions=questionSets[currentSet];const q=questions[level];$("starCount").textContent=stars;$("progressText").textContent=reviewMode?`MISTAKE PRACTICE · ${reviewPos+1} / ${reviewQueue.length}`:`LEVEL ${currentSet+1} · QUESTION ${level+1} / ${questions.length}`;$("progressFill").style.width=((reviewMode?reviewPos+1:level+1)/(reviewMode?reviewQueue.length:questions.length)*100)+"%";$("guideEmoji").textContent=emoji[avatar]||"🎀";$("greeting").textContent=`Hey, ${profile.name}!`;$("prompt").textContent=q.prompt;$("topic").textContent=q.topic;$("equation").textContent=q.eq;$("hint").classList.add("hidden");$("feedback").className="feedback hidden";$("nextBtn").classList.add("hidden");$("hintBtn").classList.remove("hidden");$("answers").innerHTML="";q.options.forEach(opt=>{const b=document.createElement("button");b.className="answer";b.textContent=opt;b.addEventListener("click",()=>choose(opt,b));$("answers").appendChild(b)})}
+function choose(opt,btn){if(answered)return;answered=true;const questions=questionSets[currentSet];const q=questions[level];const correct=opt===q.correct;if(reviewMode){if(correct)wrongQuestionIndexes.delete(level);else wrongQuestionIndexes.add(level)}else if(!correct){wrongQuestionIndexes.add(level)}stats.questionsAnswered++;stats.topic[q.topic]=stats.topic[q.topic]||{answered:0,correct:0};stats.topic[q.topic].answered++;if(correct){stats.correctAnswers++;stats.topic[q.topic].correct++}stats.lastPlayed=new Date().toISOString();saveStats();document.querySelectorAll(".answer").forEach(b=>{b.disabled=true;if(b.textContent===q.correct)b.classList.add("correct")});if(!correct)btn.classList.add("wrong");if(correct&&!starred.has(`${currentSet}-${level}`)){stars++;starred.add(`${currentSet}-${level}`);stats.starsEarned=(stats.starsEarned||0)+1;saveStats()}$("starCount").textContent=stars;$("feedback").className="feedback "+(correct?"good":"bad");$("feedback").innerHTML=`<h3>${correct?"🎉 Correct! You earned a star!":"💜 Not quite — let's learn it together."}</h3><p>${q.explain}</p>${correct?"":`<p style="margin-top:8px"><strong>The answer is ${q.correct}.</strong> Now you know how to solve this one!</p>`}`;$("hintBtn").classList.add("hidden");$("nextBtn").classList.remove("hidden");$("nextBtn").textContent=reviewMode?(reviewPos===reviewQueue.length-1?"FINISH PRACTICE ✓":"NEXT MISTAKE →"):(level===questions.length-1?"FINISH LEVEL 🏆":"NEXT CHALLENGE →")}
+$("nextBtn").addEventListener("click",()=>{const questions=questionSets[currentSet];if(reviewMode){if(reviewPos<reviewQueue.length-1){reviewPos++;level=reviewQueue[reviewPos];showQuestion()}else{reviewMode=false;$("finalScore").textContent=`⭐ ${stars} / ${questions.length} stars · Practice complete`;$("finishText").textContent=wrongQuestionIndexes.size?`Good effort, ${profile.name}! You can practise the questions still needing work again.`:`Brilliant, ${profile.name}! You corrected every mistake. Your original score stays the same.`;$("reviewMistakesBtn").classList.toggle("hidden",wrongQuestionIndexes.size===0);$("nextLevelBtn").classList.toggle("hidden",currentSet>=questionSets.length-1);screen("finish")}}else if(level<questions.length-1){level++;showQuestion()}else{stats.gamesCompleted++;stats.unlockedLevel=Math.max(stats.unlockedLevel||0,Math.min(currentSet+1,questionSets.length-1));stats.lastPlayed=new Date().toISOString();saveStats();renderLevelChoices();$("finalScore").textContent=`⭐ ${stars} / ${questions.length} stars`;$("finishText").textContent=`Amazing work, ${profile.name}! You completed Level ${currentSet+1} with ${questions.length} questions. ${currentSet<questionSets.length-1?"A new level is now unlocked with trickier puzzles!":"You conquered every level — algebra boss champion!"}`;$("reviewMistakesBtn").classList.toggle("hidden",wrongQuestionIndexes.size===0);$("nextLevelBtn").classList.toggle("hidden",currentSet>=questionSets.length-1);screen("finish")}});
+$("reviewMistakesBtn").addEventListener("click",startMistakeReview);
+$("nextLevelBtn").addEventListener("click",()=>startSet(Math.min(currentSet+1,questionSets.length-1)));
+$("againBtn").addEventListener("click",()=>startSet(currentSet));$("menuBtn").addEventListener("click",()=>{renderLevelChoices();screen("home")});
+// PWA installation prompt, where supported
+let deferredPrompt;const installBtn=$("installBtn");
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;installBtn.classList.remove("hidden")});
+installBtn.addEventListener("click",async()=>{if(!deferredPrompt){alert("To install: open this app's website in Chrome, tap ⋮, then choose 'Install app' or 'Add to Home screen'.");return}deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBtn.classList.add("hidden")});
+
+</script>
+</body>
+</html>
